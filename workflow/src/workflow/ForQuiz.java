@@ -22,11 +22,11 @@ public class ForQuiz {
 		//3번 문제
 		int result3 = 0;
 		for (int k = 1; k <= 100; k++) {
-			if (k % 3 == 0 && k % 5 == 0 && k % 6 == 0) {
-				result3 += k;
+			if (k % 3 == 0 || k % 5 == 0 || k % 6 == 0) {
+				System.out.println(k);
 			}
 		}
-		System.out.println(result3);
+		
 		
 		//4번 문제
 		/*
