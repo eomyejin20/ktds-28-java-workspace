@@ -1,6 +1,78 @@
 package workflow;
 
 public class MethodQuiz2 {
+	
+//	9. 정수 배열을 파라미터로 받아, 2,5,8 배수인 숫자만 출력하는 메소드.
+	public static void printArr(int[] arr) {
+		for (int i = 0;  i < arr.length; i++) {
+			if(arr[i] % 2 == 0 || arr[i] % 5 == 0 || arr[i] % 8 == 0)
+			System.out.println(arr[i]);
+		}
+	}
+	
+	
+	
+//	8. 실수형 변수 4개를 파라미터로 받아, 가장 작은 수만 반환하는 메소드.
+	public static double min(double num1, double num2, double num3, double num4) {
+		double minNum = num1;
+		
+		if ( num1 < num2 ) {
+			minNum = num1;
+		}
+		else minNum = num2;
+		
+		if ( num3 < minNum ) {
+			minNum = num3;
+		}
+		if ( num4 < minNum ) {
+			minNum = num4;
+		}
+		return minNum;
+	}
+	
+//	7. 실수형 변수 2개를 파라미터로 받아, 가장 큰 수만 반환하는 메소드.
+	public static double max(double num1, double num2) {
+		double maxNum = num1;
+		if ( num1 < num2 ) {
+			maxNum = num2;
+		}
+		return maxNum;
+	}
+	
+	/*
+	public static double shift(int num1, double num2) {
+		double fNum = 
+		return fNum;
+	}*/
+	
+//	4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 출력하는 메소드.
+	public static double div2(int num1, int num2) {
+		double fNum = (double) num1 / num2;
+		return fNum;
+	}
+	
+//	4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 출력하는 메소드.
+	public static void div(int num1, int num2) {
+		float fNum = (float) num1 / num2;
+		System.out.println(fNum);
+	}
+	
+//	3. 정수형 변수 3개를 파라미터로 받아, 합계를 반환하는 메소드.
+	public static void add(int num1, int num2, int num3) {
+		System.out.println(num1 + num2 + num3);
+	}
+	
+//	2. 정수형 변수 2개를 파라미터로 받아, 합계를 출력하는 메소드.
+	public static void add(int num1, int num2) {
+		System.out.println(num1 + num2);
+	}
+	
+//	1. 정수형 변수 2개를 파라미터로 받아, 값을 출력하는 메소드.
+	public static void print(int num1, int num2) {
+		System.out.println(num1);
+		System.out.println(num2);
+		
+	}
 
 	public static void main(String[] args) {
 //		하나의 클래스에 아래 메소드를 모두 만들어 호출합니다.
@@ -10,30 +82,46 @@ public class MethodQuiz2 {
 //		 
 //
 //		1. 정수형 변수 2개를 파라미터로 받아, 값을 출력하는 메소드.
+		print(2, 5);
 //
 //		2. 정수형 변수 2개를 파라미터로 받아, 합계를 출력하는 메소드.
-//
+		add(90, 6);
+
 //		3. 정수형 변수 3개를 파라미터로 받아, 합계를 반환하는 메소드.
-//
+		add(32, 5, 78);
+
 //		4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 출력하는 메소드.
+		div(25, 10);
 //
 //		5. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 반환하는 메소드.
+		double fNum = div2(25, 10);
+		System.out.println(fNum);
 //
 //		6. 실수형 변수 1개와 정수형 파라미터 1개를 받아 소수점 이하 자리수를 변경하여 반환하는 메소드.
 //
-//		   -> 예> 소수점 변경(10.33333333, 2) ==> 10.33 
+//		   -> 예> 소수점 변경(10.33333333, 2) ==> 10.33
 //
 //		   -> 예> 소수점 변경(10.33333333, 3) ==> 10.333
 //
 //		   -> 예> 소수점 변경(10.33333333, 1) ==> 10.3
 //
 //		   -> 예> 소수점 변경(10.33333333, 0) ==> 10.0
+		//double sNum = shift(4, 3.2);
 //
 //		7. 실수형 변수 2개를 파라미터로 받아, 가장 큰 수만 반환하는 메소드.
+		double maxNum = max(9.53213, 74.2421);
+		System.out.println(maxNum);
 //
 //		8. 실수형 변수 4개를 파라미터로 받아, 가장 작은 수만 반환하는 메소드.
+		double minNum = min(2.588, 1.862, 9.1654, 12.5412);
+		System.out.println(minNum);
 //
 //		9. 정수 배열을 파라미터로 받아, 2,5,8 배수인 숫자만 출력하는 메소드.
+		int[] arr = new int[100];
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = i;
+		}
+		printArr(arr); 
 //
 //		10. 문자열 1개와 정수형 변수 1개를 파라미터로 받아, 문자열을 정수형 변수만큼 반복 출력하는 메소드.
 //
