@@ -11,6 +11,7 @@ public class MethodQuiz2 {
 //	16. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복되지 않는 값만 출력하는 메소드.
 	public static void printNotDupl(int[] arr1, int[] arr2) {
 		System.out.print("16번 정답: ");
+		boolean isNull = true;
 		
 		// 첫 번째 배열 값을 비교
 		for (int i = 0; i < arr1.length; i++) {
@@ -23,6 +24,7 @@ public class MethodQuiz2 {
 			}
 			if (!isDuplicate) {
 				System.out.print(arr1[i] + " ");
+				isNull = false;
 			}
 		}
 		
@@ -37,8 +39,14 @@ public class MethodQuiz2 {
 			}
 			if (!isDuplicate) {
 				System.out.print(arr2[i] + " ");
-			}
+				isNull = false;
+			} 
 		}
+		
+		if (isNull) {
+			System.out.print("\"\"");
+		}
+		
 		System.out.println();
 	}
 	
@@ -46,13 +54,19 @@ public class MethodQuiz2 {
 //	15. 정수형 배열 변수 2개를 파라미터로 받아, 각 배열에 중복값만 출력하는 메소드.
 	public static void printDupl(int[] arr1, int[] arr2) {
 		System.out.print("15번 정답: ");
+		boolean isNull = true;
+		
 		for (int i = 0; i < arr1.length; i++) {
 			for (int j = 0; j < arr2.length; j++) {
 				if ( arr1[i] == arr2[j] ) {
-					System.out.print(arr1[i]);
-					System.out.print(" ");
+					System.out.print(arr1[i]+ " ");
+					isNull = false;
+					break;
 				}
 			}
+		}
+		if (isNull) {
+			System.out.print("\"\"");
 		}
 		System.out.println();
 	}
