@@ -168,7 +168,7 @@ public class MethodQuiz2 {
 //	6. 실수형 변수 1개와 정수형 파라미터 1개를 받아 소수점 이하 자리수를 변경하여 반환하는 메소드.
 	public static double shiftMethod(double d_num, int num) {
 		// 10.3333333 2면 두 자릿수까지
-		//1033.xxxx
+		// 1033.xxxx
 		int multi = 1;
 		for (int i = 0; i < num; i++) {
 			multi *= 10;
@@ -176,14 +176,14 @@ public class MethodQuiz2 {
 		d_num *= multi; //1033.xxxx
 		
 		double result = (int) d_num; // 1033
-		//System.out.println(result);
+		// System.out.println(result);
 		result /= multi;
-		//System.out.println(result);
+		// System.out.println(result);
 		return result;
 		
 	}
 	
-//	4. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 출력하는 메소드.
+//	5. 정수형 변수 2개를 파라미터로 받아, 나누기의 결과(실수)를 반환하는 메소드.
 	public static double div2(int num1, int num2) {
 		double fNum = (double) num1 / num2;
 		return fNum;
