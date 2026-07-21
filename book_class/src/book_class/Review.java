@@ -1,5 +1,9 @@
 package book_class;
 
+/**
+ * 리뷰
+ */
+
 public class Review {
 
 	/**
@@ -25,17 +29,17 @@ public class Review {
 	/**
 	 * 좋아요 고유 값
 	 */
-	int liked_id;
+	// int likedId; 별도의 좋아요 클래스로
 	
 	/**
 	 * 좋아요 여부
 	 */
-	boolean isLike;
+	//boolean isLike;
 	
 	/**
 	 * 댓글 고유 값
 	 */
-	int commentId;
+	//int commentId; 별도의 댓글 클래스로
 	
 	/**
 	 * 댓글 내용
@@ -45,5 +49,5 @@ public class Review {
 	/**
 	 * 1 ~ 4 평점 (실수)
 	 */
-	float rating;
+	// float rating; //별도의 클래스로
 }

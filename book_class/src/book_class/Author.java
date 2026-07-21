@@ -1,5 +1,9 @@
 package book_class;
 
+/**
+ * 작가
+ */
+
 public class Author {
 
 	/**
