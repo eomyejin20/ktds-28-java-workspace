@@ -9,10 +9,10 @@ public class Student {
 	/**
 	 * 점수
 	 */
-	int java;
-	int python;
-	int cpp;
-	int csharp;
+	private int java;
+	private int python;
+	private int cpp;
+	private int csharp;
 	
 	/**
 	 * 점수를 할당
@@ -32,7 +32,7 @@ public class Student {
 	 * 합계
 	 * @return 점수의 합계
 	 */
-	public int getSumAllScores() {
+	private int getSumAllScores() {
 		return java + python + cpp + csharp;
 	}
 	
