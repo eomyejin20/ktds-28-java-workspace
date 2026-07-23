@@ -15,6 +15,21 @@ public class Student {
 	private int csharp;
 	
 	/**
+	 * 모든 학생이 100점
+	 */
+	public Student() {
+//		this.java = 100;
+//		this.python = 100;
+//		this.cpp = 100;
+//		this.csharp = 100;
+		
+		// 생성자 내부에서는 다른 생성자를 호출할 수있음.
+		// 호출방법 : this();
+		//this(); //파라미터가 없는 생성자호출
+		this(100, 100, 100, 100);
+	}
+	
+	/**
 	 * 점수를 할당
 	 * @param java
 	 * @param python
@@ -88,6 +103,7 @@ public class Student {
 	public static void main(String[] args) {
 		//							  java python cpp csharp
 		Student student = new Student(100, 90, 80, 70);
+		Student kim = new Student(); //모든 점수가 100점인 학생 인스턴스
 		
 		int sum = student.getSumAllScores();
 		double average = student.getAverage();
