@@ -8,7 +8,7 @@ public class EV extends Vehicle{
 //		super(carModel);
 //		this.batteryAmount = 0.0f;
 		this(carModel, 0f);
-	}
+	} 
 	
 	public EV(String carModel, float batteryAmount) {
 		super(carModel);

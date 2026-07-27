@@ -23,6 +23,6 @@ public class Main {
 		contact2.printContact();
 		
 		
-	}
+	} 
 
 }

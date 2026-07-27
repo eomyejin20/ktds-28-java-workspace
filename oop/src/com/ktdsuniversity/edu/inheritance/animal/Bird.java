@@ -6,7 +6,7 @@ public class Bird extends Animal{
 	private String buri;
 	private String feathers;
 	private String oviparous;
-	private String tail;
+	private String tail; 
 	
 	public Bird(String name, String age, String sex, 
 			float weight, String species, int tall, 

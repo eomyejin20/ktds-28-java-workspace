@@ -12,6 +12,6 @@ public class EmailContact extends Contact{
 	}
 	public String getEmail() {
 		return this.email;
-	}
+	} 
 
 }

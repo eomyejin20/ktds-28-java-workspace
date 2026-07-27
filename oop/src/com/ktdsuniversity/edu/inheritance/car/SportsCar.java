@@ -8,6 +8,6 @@ public class SportsCar extends Vehicle{
 	
 	public void startTurboMode() {
 		System.out.println(super.getName() + "의 터보모드를 켭니다.");
-	}
+	} 
 
 }

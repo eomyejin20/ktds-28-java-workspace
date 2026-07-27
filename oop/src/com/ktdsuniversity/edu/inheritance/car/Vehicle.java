@@ -10,7 +10,7 @@ public class Vehicle {
 	
 	public void startEngine() {
 		System.out.println("시동을 겁니다.");
-	}
+	} 
 	
 	public String getName() {
 		return this.carModel;

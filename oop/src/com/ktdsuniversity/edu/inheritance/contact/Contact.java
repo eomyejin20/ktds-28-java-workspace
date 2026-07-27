@@ -7,7 +7,7 @@ public class Contact {
 	
 //	public Contact() {
 //		
-//	}
+//	} 
 	
 	public Contact(String name, String phone) {
 		System.out.println("Contact 인스턴스를 생성합니다.");

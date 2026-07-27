@@ -6,7 +6,7 @@ public class Fish extends Animal{
 	private String tail;
 	private String scales;
 	private String gill; // 아가미
-	private String habitat; // 서식지
+	private String habitat; // 서식지 
 	
 	public Fish(String name, String age, String sex, 
 			float weight, String species, int tall, 

@@ -7,7 +7,7 @@ public class Amphibia extends Animal{
 			float weight, String species, int tall, 
 			String mucus) {
 		super(name, age, sex, weight, species, tall);
-		this.mucus = mucus;
+		this.mucus = mucus; 
 	}
 	
 	public void jump() {

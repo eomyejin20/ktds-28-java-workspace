@@ -7,7 +7,7 @@ public class Animal {
 	private String sex;
 	private float weight;
 	private String species;
-	private int tall;
+	private int tall; 
 	
 	public Animal(String name, String age, String sex, 
 					float weight, String species, int tall) {

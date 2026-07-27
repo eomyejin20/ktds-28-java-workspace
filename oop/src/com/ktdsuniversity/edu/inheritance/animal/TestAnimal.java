@@ -7,7 +7,7 @@ public class TestAnimal {
 			bird.fly();
 		}
 	}
-	
+	 
 	public static void buildNest(Animal animal) {
 		if (animal instanceof Bird bird) {
 			bird.buildNest();
