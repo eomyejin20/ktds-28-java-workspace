@@ -1,4 +1,4 @@
-package oop.inheritence.zoo;
+package com.ktdsuniversity.edu.oop.inheritence.zoo;
 
 public class Tiger {
 	

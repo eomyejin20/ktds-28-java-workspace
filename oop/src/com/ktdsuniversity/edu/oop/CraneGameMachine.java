@@ -1,4 +1,4 @@
-package oop;
+package com.ktdsuniversity.edu.oop;
 
 import java.util.Random;
 /**

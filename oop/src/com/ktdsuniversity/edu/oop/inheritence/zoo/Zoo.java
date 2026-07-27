@@ -1,4 +1,4 @@
-package oop.inheritence.zoo;
+package com.ktdsuniversity.edu.oop.inheritence.zoo;
 
 public class Zoo {
 	
@@ -15,7 +15,7 @@ public class Zoo {
 	}
 	
 	public void addTiger() {
-		this.animals[10] = new Tiger();
+		//this.animals[10] = new Tiger();
 	}
 
 	public void enterTourist() {

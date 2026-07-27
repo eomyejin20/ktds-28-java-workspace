@@ -1,9 +1,9 @@
 package Test;
 
-import oop.Car;
-import oop.Student;
-
 import java.util.Scanner;
+
+import com.ktdsuniversity.edu.oop.Car;
+import com.ktdsuniversity.edu.oop.Student;
 
 public class Test {
 

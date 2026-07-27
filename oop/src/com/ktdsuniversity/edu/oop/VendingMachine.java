@@ -1,4 +1,4 @@
-package oop;
+package com.ktdsuniversity.edu.oop;
 
 /**
  * 자판기
