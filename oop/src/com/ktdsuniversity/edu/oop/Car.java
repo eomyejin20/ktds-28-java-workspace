@@ -60,6 +60,12 @@ public class Car {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		// 출력의 형태를 정의
+		return this.zero100seconds + "";
+	}
+	
 	
 	public static void main(String[] args) {
 		
@@ -68,6 +74,16 @@ public class Car {
 		Car kona = new Car(8);
 		// Car 타입의 carnival 인스턴를 생성
 		Car carnival = new Car(7);
+		
+		System.out.println(kona); // Type@HashData
+		System.out.println(carnival); // Type@HashData
+		String name = "sdljfjkd";
+		System.out.println(name); // sdljfjkd
+		
+		StringBuffer buffer =  new StringBuffer();
+		buffer.append("skdjfk");
+		System.out.println(buffer);
+		
 		
 		//Car kona2 = new Car(8);
 		
