@@ -109,8 +109,8 @@ public class BasicArrayTest {
 		sum = 0;
 		avg = 0;
 		for (int  i = 0; i < strNum.length; i++) {
-			strNum[i] = strNum[i].replace("^[0-9]", "");
 			if (strNum != null) {
+				strNum[i] = strNum[i].replace("^[0-9]", "");
 				num[i] = Integer.parseInt(strNum[i]);
 				sum += num[i];
 				count++;
