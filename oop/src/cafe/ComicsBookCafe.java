@@ -21,17 +21,20 @@ public class ComicsBookCafe {
 	public void displayBooks() {
 		System.out.println("=====만화책 목록======");
 		// ComicsBook book = this.comicsBooks[i];
+		// 예외처리
 		for (int i = 0; i < this.comicsBooks.length; i++) {
 			ComicsBook book = this.comicsBooks[i];
-			String state = "대여가능";
-			if (book.getIsRent()) {
-				state = "대여중";
-			}
+			if(book != null) {
+				String state = "대여가능";
+				if (book.getIsRent()) {
+					state = "대여중";
+				}
 
-			System.out.println("만화책 번호: " + i);
-			System.out.println("만화책 이름: " + book.getBookTitle());
-			System.out.println("만화책 대여상태: " + state);
-			System.out.println("만화책 대여비: " + book.getBookPrice());
+				System.out.println("만화책 번호: " + i);
+				System.out.println("만화책 이름: " + book.getBookTitle());
+				System.out.println("만화책 대여상태: " + state);
+				System.out.println("만화책 대여비: " + book.getBookPrice());
+			}
 		}
 	}
 
