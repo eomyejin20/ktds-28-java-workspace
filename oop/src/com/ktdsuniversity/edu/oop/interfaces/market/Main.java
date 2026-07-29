@@ -5,6 +5,8 @@ import com.ktdsuniversity.edu.oop.interfaces.market.Item.FreshItem;
 import com.ktdsuniversity.edu.oop.interfaces.market.Item.FrozenItem;
 import com.ktdsuniversity.edu.oop.interfaces.market.Item.Item;
 import com.ktdsuniversity.edu.oop.interfaces.market.customer.Customer;
+import com.ktdsuniversity.edu.oop.interfaces.market.customer.DiscountCustomer;
+import com.ktdsuniversity.edu.oop.interfaces.market.customer.NopayCustomer;
 import com.ktdsuniversity.edu.oop.interfaces.market.customer.CustomerInterface;
 
 public class Main {
@@ -17,9 +19,9 @@ public class Main {
 		Item whisky = new Drink("조니워커", 335000, 40);
 		Item conac = new Drink("Markers Mark", 50000, 40);
 		
-		Customer cust1 = new Customer("A", 500_000, 16);
-		Customer cust2 = new DiscountCustomer("B", 30_000, 20);
-		Customer cust3 = new NopayCustomer("C", 1_000_000, 51);
+		CustomerInterface cust1 = new Customer("A", 500_000, 16);
+		CustomerInterface cust2 = new DiscountCustomer("B", 30_000, 20);
+		CustomerInterface cust3 = new NopayCustomer("C", 1_000_000, 51);
 		
 		cust1.buy(new Item[] {whisky, dumpling, dumpling, snack});
 		cust2.buy(new Item[] {whisky, dumpling, dumpling, snack});
