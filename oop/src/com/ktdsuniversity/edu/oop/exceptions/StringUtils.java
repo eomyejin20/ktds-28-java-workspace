@@ -13,5 +13,4 @@ public class StringUtils {
 			return defaultString;
 		}
 	}
-
 }
