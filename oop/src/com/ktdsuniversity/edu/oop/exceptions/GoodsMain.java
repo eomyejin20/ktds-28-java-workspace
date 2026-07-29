@@ -3,13 +3,24 @@ package com.ktdsuniversity.edu.oop.exceptions;
 public class GoodsMain {
 	
 	public static void main(String[] args) {
-		GoodsHolder capsuleHolder = new GoodsHolder(-1);
+		GoodsHolder capsuleHolder = null;
+		while (capsuleHolder == null) {
+			int randomCount = (int) (Math.random() *1000) - 300;
+			try {
+				capsuleHolder = new GoodsHolder(randomCount);
+			} catch (HolderInitiateException hie) {
+				System.out.println(hie.getMessage());
+			}
+		}
+		
+		
+//		capsuleHolder = new GoodsHolder(-1);
 
-		capsuleHolder.addGoods("네스프레소 솔티드 카라멜 커피", 8_900);
-		capsuleHolder.addGoods("null", 9_900);
-		capsuleHolder.addGoods("", 7_800);
-		capsuleHolder.addGoods("    ", 8_000);
-		capsuleHolder.addGoods("일리 에스프레소", 7_900);
+		capsuleHolder.addGoods("네스프레소 솔티드 카라멜 커피", null);
+		capsuleHolder.addGoods("null", "팔천구백원");
+		capsuleHolder.addGoods("", "3000000000");
+		capsuleHolder.addGoods("    ", "알ㄹ");
+		capsuleHolder.addGoods("일리 에스프레소", "7900");
 //		capsuleHolder.printGoods();
 		capsuleHolder.printGoodsAt(-1);
 		capsuleHolder.printGoodsAt(0);

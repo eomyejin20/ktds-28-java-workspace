@@ -7,9 +7,42 @@ public class GoodsHolder {
 	
 	public GoodsHolder(int goodsCount) {
 		if (goodsCount < 0) {
-			goodsCount = 0;
+//			goodsCount = 0;
+			HolderInitiateException hie = new HolderInitiateException(" 잘못된 인덱스 개수입니다. 0보다 큰 값을 입력하세요.");
+			throw hie;
 		}
 		this.goods = new Goods[goodsCount];
+	}
+	
+	public void addGoods(String name, String price) {
+		if (price == null) {
+			return;
+		}
+		
+		int intPrice = 0;
+		try {
+			intPrice = Integer.parseInt(price);
+		} catch (NumberFormatException nfe) {
+			System.out.println("숫자 변환 실패 "+ nfe.getMessage());
+			return;
+		}
+		
+		this.addGoods(name, intPrice);
+		
+//		price = price.replaceAll("[^0-9]", "");
+//		
+//		if (price.isBlank()) {
+//			return;
+//		}
+//		System.out.println(price);
+////		int tempPrice = Integer.parseInt(price);
+//		long tempPrice = Long.parseLong(price);
+//		if (tempPrice > Integer.MAX_VALUE || tempPrice < Integer.MIN_VALUE) {
+//			return;
+//		} else {
+//			int intPrice = (int) tempPrice;
+//			this.addGoods(name, intPrice);
+//		}
 	}
 	
 	public void addGoods(String name, int price) {
