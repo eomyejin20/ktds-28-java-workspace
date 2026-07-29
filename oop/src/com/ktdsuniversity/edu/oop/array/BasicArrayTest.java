@@ -17,12 +17,12 @@ public class BasicArrayTest {
 		System.out.println();
 
 		/**2. 정수형 배열 변수의 합을 계산해 출력해보세요.*/
-		int sum = 0;
+		int sumInt = 0;
 		
 		for (int i : arrInt) {
-			sum += arrInt[i];
+			sumInt += arrInt[i];
 		}
-		System.out.println("정수형 배열 합: " + sum);
+		System.out.println("정수형 배열 합: " + sumInt);
 
 		/**3. 실수형 배열 변수를 만들고 랜덤한 값을 할당해보세요.*/
 		Random random = new Random();
@@ -30,18 +30,18 @@ public class BasicArrayTest {
 		
 		System.out.print("실수형 배열: ");
 		for (int i = 0; i < arrFloat.length; i++) {
-			arrFloat[i] = random.nextFloat();
+			arrFloat[i] = random.nextFloat(1_000);
 			System.out.print(arrFloat[i]+ " ");
 		}
 		System.out.println();
 		
 		/**4. 실수형 배열 변수의 합을 계산해 출력해보세요.*/
-		float sumF = 0; 
+		float sumFloat = 0; 
 		
 		for(float i : arrFloat) {
-			sumF += i;
+			sumFloat += i;
 		}
-		System.out.println("실수형 배열 합: " + sumF);
+		System.out.println("실수형 배열 합: " + sumFloat);
 		
 		/**5. 실수형 배열 변수 내의 가장 큰 값을 출력해보세요 .*/
 		Arrays.sort(arrFloat);
@@ -75,58 +75,57 @@ public class BasicArrayTest {
 		int[] arrInt2 = new int[10];
 		System.out.print("정수형 배열2: ");
 		for (int i = 0; i < arrInt2.length; i++ ) {
-			arrInt2[i] = random.nextInt();
+			arrInt2[i] = random.nextInt(10_000);
 			System.out.print(arrInt2[i] + " ");
 		}
-		
 		System.out.println();
 		
 		/**10. 정수형 배열 변수 내의 값 중 평균 이상의 값들만 출력해보세요.*/
-		int avg = 0;
-		sum = 0;
+		double avgDouble = 0;
+		sumInt = 0;
 		
 		for(int i : arrInt2) {
-			sum += i;
+			sumInt += i;
 		}
-		avg = sum / arrInt2.length;
-		System.out.println("평균: " + avg);
-		
+		avgDouble = (sumInt * 1.00) / arrInt2.length;
+		System.out.printf("평균: %.2f\n", avgDouble);
 		System.out.print("평균 이상의 값들: ");
-		for(int i : arrInt2) {
-			if (i >= avg) {
-				System.out.print(i + " ");
+		int resultInt = 0;
+		for(double i : arrInt2) {
+			if (i >= avgDouble) {
+				resultInt = (int) i;
+				System.out.print(resultInt + " ");
 			} 
 		}
 		System.out.println();
 		
-		
 		/**15. 숫자 형태의 문자열 배열 변수를 만들어보세요.*/
-		String[] strNum = new String[] {"123", "54", "6861"};
+		String[] strNum = new String[] {"123.54", "54", "6861.48"};
 
 		/**16. 숫자 형태의 문자열 배열 변수의 값을 정수로 변환한 뒤 정수의 합과 평균을 출력해보세요.*/
-		int[] num = new int[strNum.length];
+		double[] num = new double[strNum.length];
 		int count = 0;
-		sum = 0;
-		avg = 0;
+		double sumDouble = 0;
+		avgDouble = 0;
 		for (int  i = 0; i < strNum.length; i++) {
 			if (strNum != null) {
 				strNum[i] = strNum[i].replace("^[0-9]", "");
-				num[i] = Integer.parseInt(strNum[i]);
-				sum += num[i];
+				num[i] = Double.parseDouble(strNum[i]);
+				sumDouble += num[i];
 				count++;
 			}
 		}
-		avg = sum / count;
-		System.out.println("합: " + sum + ", 평균: " + avg);
-
+		avgDouble = sumDouble / count;
+		System.out.printf("문자배열의 숫자형태 합: %.2f, 평균: %.2f", sumDouble, avgDouble);
+		System.out.println();
+		
 		/**17. 불린 형태의 배열 변수를 만들고 값을 랜덤하게 할당해보세요.*/
-		boolean[] binaryArr = new boolean[10];
+		boolean[] binaryArr = new boolean[7];
 		System.out.print("불린 배열: ");
 		for (int i = 0; i < binaryArr.length; i++ ) {
 			binaryArr[i] = random.nextBoolean();
 			System.out.print(binaryArr[i] + " ");
 		}
-		
 		System.out.println();
 		
 		/**18. 불린 형태의 배열 변수 내에서 true의 개수는 몇 개인지 세어 출력해보세요.*/
@@ -139,14 +138,15 @@ public class BasicArrayTest {
 		System.out.println("true의 개수: " + count);
 
 		/**19. 불린 형태의 배열 변수 내에서 false가 존재하는 비율은 몇 %인지 계산해 출력해보세요.*/
-		double falseCount = 0.00;
+		double falseCountDouble = 0;
 		for (boolean i : binaryArr) {
 			if (!i) {
-				falseCount++;
+				falseCountDouble++;
 			}
 		}
-		double radio = (falseCount / binaryArr.length) * 100;
-		System.out.println("false 존재 비율: " + radio + "%");
+		double radioDouble = (falseCountDouble / binaryArr.length) * 100;
+		System.out.printf("false 존재 비율: %.2f", radioDouble);
+		System.out.println();
 
 		/**20. 문자열 형태의 배열 변수를 만들고 값을 랜덤하게 할당해보세요.*/
 		String[] str = new String[10];
@@ -160,10 +160,10 @@ public class BasicArrayTest {
 		System.out.println();
 		
 		/**21. 문자열 형태의 배열 변수 내의 모든 문자열의 길이를 합한 값을 계산해 출력해보세요.*/
-		sum = 0;
+		sumInt = 0;
 		for (int i = 0; i < str.length; i++) {
-			sum += str[i].length();
+			sumInt += str[i].length();
 		}
-		System.out.println("문자열 길이의 합: " + sum);
+		System.out.println("문자열 길이의 합: " + sumInt);
 	}
 }
