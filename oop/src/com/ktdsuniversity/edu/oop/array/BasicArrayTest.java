@@ -100,23 +100,23 @@ public class BasicArrayTest {
 		System.out.println();
 		
 		/**15. 숫자 형태의 문자열 배열 변수를 만들어보세요.*/
-		String[] strNum = new String[] {"123.54", "54", "6861.48"};
+		String[] strNum = new String[] {"123", "54", "68656"};
 
 		/**16. 숫자 형태의 문자열 배열 변수의 값을 정수로 변환한 뒤 정수의 합과 평균을 출력해보세요.*/
-		double[] num = new double[strNum.length];
+		int[] num = new int[strNum.length];
 		int count = 0;
-		double sumDouble = 0;
+		sumInt = 0;
 		avgDouble = 0;
 		for (int  i = 0; i < strNum.length; i++) {
 			if (strNum != null) {
 				strNum[i] = strNum[i].replace("^[0-9]", "");
-				num[i] = Double.parseDouble(strNum[i]);
-				sumDouble += num[i];
+				num[i] = Integer.parseInt(strNum[i]);
+				sumInt += num[i];
 				count++;
 			}
 		}
-		avgDouble = sumDouble / count;
-		System.out.printf("문자배열의 숫자형태 합: %.2f, 평균: %.2f", sumDouble, avgDouble);
+		avgDouble = (sumInt * 1.00) / count;
+		System.out.printf("문자배열의 숫자형태 합: %d, 평균: %.2f", sumInt, avgDouble);
 		System.out.println();
 		
 		/**17. 불린 형태의 배열 변수를 만들고 값을 랜덤하게 할당해보세요.*/
