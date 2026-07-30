@@ -18,4 +18,14 @@ public class Goods {
 		return this.price;
 	}
 	
+	// 메모리 주소 안의 값을 비교하는 오버라이딩
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Goods otherGoods) {
+			return this.name.equals(otherGoods.name) && 
+					this.price == otherGoods.price;
+		} 
+		return false;
+	}
+	
 }
