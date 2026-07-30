@@ -1,4 +1,7 @@
-package com.ktdsuniversity.edu.oop.postSystem.datas;	
+package com.ktdsuniversity.edu.oop.postSystem.datas;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 게시글 정보
@@ -6,9 +9,9 @@ package com.ktdsuniversity.edu.oop.postSystem.datas;
 public class Post {
 
 	/** 게시글을 구분하는 고유 ID */
-	private int postId;
+//	private int postId;
 	/** 게시글 제목 */
-	private String postTile;
+	private String postTitle;
 	/** 게시글 작성자 */
 	private String postUser;
 	/** 게시글 작성 시간 */
@@ -17,11 +20,14 @@ public class Post {
 	private String content;
 	/** 게시글 조회수 */
 	private int viewCount;
+	/** 댓글 목록 */
+	private List<Comment> comments = new ArrayList<>();
 	
-	public Post(int postId, String postTitle, String postUser, 
+	
+	public Post(String postTitle, String postUser, 
 			String createdAt, String content, int viewCount) {
-		this.postId = postId;
-		this.postTile = postTitle;
+//		this.postId = postId;
+		this.postTitle = postTitle;
 		this.postUser = postUser;
 		this.createdAt = createdAt;
 		this.content = content;
@@ -29,12 +35,12 @@ public class Post {
 		
 	}
 	
-	public int getPostId() {
-		return this.postId;
-	}
+//	public int getPostId() {
+//		return this.postId;
+//	}
 	
-	public String getPostTile() {
-		return this.postTile;
+	public String getPostTitle() {
+		return this.postTitle;
 	}
 	
 	public String getPostUser() {
@@ -51,6 +57,15 @@ public class Post {
 	
 	public int getViewCount() {
 		return this.viewCount;
+	}
+	
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+	
+	/** 게시글 조회수 증가 */
+	public void increaseViewCount() {
+		this.viewCount++;
 	}
 	
 }

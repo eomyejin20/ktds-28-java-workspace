@@ -5,6 +5,8 @@ package com.ktdsuniversity.edu.oop.postSystem.datas;
  */
 public class Comment {
 	
+	/** 해당 게시글 고유 ID */
+	private int postId;
 	/** 댓글을 구분하는 고유 ID */
 	private int commentId;
 	/** 댓글 내용 */
@@ -14,17 +16,21 @@ public class Comment {
 	/** 댓글 작성 시간*/
 	private String createdAt;
 	/** 댓글 추천수 */
-	private int recommendCnt;
+	private int recommendCount;
 	
-	public Comment(int commentId, String content, String userName, 
-			String createdAt, int recommendedCnt) {
+	public Comment(int postId, int commentId, String content, String userName, 
+			String createdAt, int recommendedCount) {
+		this.postId = postId;
 		this.commentId = commentId;
 		this.content = content;
 		this.userName = userName;
 		this.createdAt = createdAt;
-		this.recommendCnt = recommendedCnt;
+		this.recommendCount = recommendedCount;
 	}
 	
+	public int getPostId() {
+		return this.postId;
+	}
 	
 	public int getCommentId() {
 		return this.commentId;
@@ -42,7 +48,12 @@ public class Comment {
 		return this.createdAt;
 	}
 	
-	public int getRecommendCnt() {
-		return this.recommendCnt;
+	public int getRecommendCount() {
+		return this.recommendCount;
+	}
+	
+	/** 댓글 추천수 증가 */
+	public void increaseRecommendCount() {
+		this.recommendCount++;
 	}
 }
