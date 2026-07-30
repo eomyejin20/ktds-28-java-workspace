@@ -1,5 +1,5 @@
 package com.ktdsuniversity.edu.oop.postSystem;
 
-public interface AriticleSystem {
+public interface PostSystem {
 
 }
