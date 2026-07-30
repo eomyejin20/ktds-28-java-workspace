@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.oop.postSystem.item;	
+package com.ktdsuniversity.edu.oop.postSystem.datas;	
 
 /**
  * 게시글 정보
