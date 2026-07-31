@@ -1,4 +1,4 @@
-package cafe;
+package com.ktdsuniversity.edu.cafe;
 
 /**
  * 고객

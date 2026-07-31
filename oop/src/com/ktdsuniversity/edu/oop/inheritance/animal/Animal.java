@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.inheritance.animal;
+package com.ktdsuniversity.edu.oop.inheritance.animal;
 
 public class Animal {
 	

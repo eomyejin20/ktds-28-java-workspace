@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.inheritance.car;
+package com.ktdsuniversity.edu.oop.inheritance.car;
 
 public class BatMobile extends SportsCar{
 	

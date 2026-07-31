@@ -3,7 +3,7 @@ package com.ktdsuniversity.edu.oop.collection.list.cafe;
 import java.util.ArrayList;
 import java.util.List;
 
-import cafe.ComicsBook;
+import com.ktdsuniversity.edu.cafe.ComicsBook;
 
 /**
  * 고객

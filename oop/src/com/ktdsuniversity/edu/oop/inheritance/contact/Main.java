@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.inheritance.contact;
+package com.ktdsuniversity.edu.oop.inheritance.contact;
 
 public class Main {
 	

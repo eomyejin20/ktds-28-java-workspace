@@ -1,4 +1,4 @@
-package cafe;
+package com.ktdsuniversity.edu.cafe;
 
 /**
  * 모든 기능을 제어

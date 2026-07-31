@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.inheritance.animal;
+package com.ktdsuniversity.edu.oop.inheritance.animal;
 
 public class Amphibia extends Animal{
 	private String mucus; // 점액
