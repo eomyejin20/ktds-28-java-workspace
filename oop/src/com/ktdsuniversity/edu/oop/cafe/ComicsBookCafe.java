@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.cafe;
+package com.ktdsuniversity.edu.oop.cafe;
 
 /**
  * 만화카페

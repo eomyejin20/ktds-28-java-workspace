@@ -1,6 +1,6 @@
 package com.ktdsuniversity.edu.oop.collection.list.cafe;
 
-import com.ktdsuniversity.edu.cafe.ComicsBook;
+import com.ktdsuniversity.edu.oop.cafe.ComicsBook;
 
 public class ComicsText {
 
