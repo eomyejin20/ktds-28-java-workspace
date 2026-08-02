@@ -56,4 +56,12 @@ public class Comment {
 	public void increaseRecommendCount() {
 		this.recommendCount++;
 	}
+	
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
+	
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
 }

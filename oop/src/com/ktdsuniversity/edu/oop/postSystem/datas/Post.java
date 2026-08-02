@@ -9,7 +9,7 @@ import java.util.List;
 public class Post {
 
 	/** 게시글을 구분하는 고유 ID */
-//	private int postId;
+	private int postId;
 	/** 게시글 제목 */
 	private String postTitle;
 	/** 게시글 작성자 */
@@ -24,20 +24,19 @@ public class Post {
 	private List<Comment> comments = new ArrayList<>();
 	
 	
-	public Post(String postTitle, String postUser, 
+	public Post(int postId, String postTitle, String postUser, 
 			String createdAt, String content, int viewCount) {
-//		this.postId = postId;
+		this.postId = postId;
 		this.postTitle = postTitle;
 		this.postUser = postUser;
 		this.createdAt = createdAt;
 		this.content = content;
 		this.viewCount = viewCount;
-		
 	}
 	
-//	public int getPostId() {
-//		return this.postId;
-//	}
+	public int getPostId() {
+		return this.postId;
+	}
 	
 	public String getPostTitle() {
 		return this.postTitle;
@@ -66,6 +65,18 @@ public class Post {
 	/** 게시글 조회수 증가 */
 	public void increaseViewCount() {
 		this.viewCount++;
+	}
+	
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
+	
+	public void setPostTtile(String title) {
+		this.postTitle = title;
+	}
+	
+	public void setPostContent(String content) {
+		this.content = content;
 	}
 	
 }

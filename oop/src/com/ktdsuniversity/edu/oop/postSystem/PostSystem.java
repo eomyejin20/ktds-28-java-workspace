@@ -1,7 +1,7 @@
 package com.ktdsuniversity.edu.oop.postSystem;
 
 /**
- * 게시판 기능
+ * 게시판 기능을 명시한 인터페이스
  */
 public interface PostSystem {
 
