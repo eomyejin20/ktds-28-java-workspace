@@ -64,4 +64,6 @@ public class Comment {
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
 	}
+	
+	// toString
 }
