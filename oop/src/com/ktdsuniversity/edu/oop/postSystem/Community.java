@@ -13,12 +13,15 @@ import com.ktdsuniversity.edu.oop.postSystem.exceptions.ArticleWriterException;
  * PostSystem을 구현한 클래스
  */
 public class Community implements PostSystem{
-	List<Post> posts = new ArrayList<>();
-	List<Comment> comments = new ArrayList<>();
-	Scanner keyboard;
+	private List<Post> posts;
+	private List<Comment> comments;
+	private Scanner keyboard;
 	
+	// 생성자에서 초기화
 	public Community(Scanner keyboard) {
 		this.keyboard = keyboard;
+		this.posts = new ArrayList<>();
+		this.comments = new ArrayList<>();
 	}
 	
 	/**
