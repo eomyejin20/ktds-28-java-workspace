@@ -21,7 +21,7 @@ public class Post {
 	/** 게시글 조회수 */
 	private int viewCount;
 	/** 댓글 목록 */
-	private List<Comment> comments = new ArrayList<>();
+//	private List<Comment> comments = new ArrayList<>();
 	
 	
 	public Post(int postId, String postTitle, String postUser, 
@@ -58,9 +58,9 @@ public class Post {
 		return this.viewCount;
 	}
 	
-	public List<Comment> getComments() {
-		return this.comments;
-	}
+//	public List<Comment> getComments() {
+//		return this.comments;
+//	}
 	
 	/** 게시글 조회수 증가 */
 	public void increaseViewCount() {
