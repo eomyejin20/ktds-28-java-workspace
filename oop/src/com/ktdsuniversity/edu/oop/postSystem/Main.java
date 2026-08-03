@@ -105,9 +105,6 @@ public class Main {
 				postId = Integer.parseInt(keyboard.nextLine().trim());
 				community.deleteAllComment(postId);
 				break;
-				
-			case 99:
-				System.out.println("종료되었습니다.");
 			}
 		}
 	}
