@@ -8,8 +8,14 @@ public class Main {
 		Scanner keyboard = new Scanner(System.in);
 		PostSystem community = new Community(keyboard);
 		
-		while (true) {
-			System.out.println("게시판 시스템을 시작합니다.");
+		int choose;
+		int postId = -1;
+		int commentId = -1;
+		boolean isFinish = false;
+		
+		while (!isFinish) {
+			System.out.println();
+			System.out.println("=========게시판 시스템을 시작합니다.=========");
 			System.out.println("원하는 기능의 숫자를 입력하세요.");
 			System.out.println("1. 게시글 작성하기");
 			System.out.println("2. 모든 게시글 조회하기");
@@ -24,88 +30,105 @@ public class Main {
 			System.out.println("11. 게시글 모두 삭제하기");
 			System.out.println("12. 게시글의 댓글 모두 삭제하기");
 			
-			int choose;
-			
 			// 입력값 예외처리
 			try {
 				choose = Integer.parseInt(keyboard.nextLine().trim());
-			} catch (NumberFormatException e) {
+			} catch (NumberFormatException nfe) {
 				System.out.println("숫자로 다시 입력해주세요.");
 				continue;
 			}
 			
-			int postId = -1;
-			int commentId = -1;
-			
-			switch (choose) {
-			case 1:
+			if (choose == 1) {
 				community.createPost();
-				break;
-
-			case 2:
+			} else if(choose == 2) {
 				community.getAllPost();
-				break;
-
-			case 3:
+			} else if(choose == 3) {
 				System.out.print("게시글 번호를 입력하세요: ");
-				postId = Integer.parseInt(keyboard.nextLine().trim());
+				try {
+					postId = Integer.parseInt(keyboard.nextLine().trim());
+				} catch (NumberFormatException nfe){
+					System.out.println("숫자로 다시 입력해주세요.");
+					continue;
+				}
 				community.getPost(postId);
-				break;
-
-			case 4:
+			} else if(choose == 4) {
 				System.out.print("게시글 번호를 입력하세요: ");
-				postId = Integer.parseInt(keyboard.nextLine().trim());
+				try {
+					postId = Integer.parseInt(keyboard.nextLine().trim());
+				} catch (NumberFormatException nfe){
+					System.out.println("숫자로 다시 입력해주세요.");
+					continue;
+				}
 				community.updatePost(postId);
-				break;
-
-			case 5:
+			} else if(choose == 5) {
 				System.out.print("게시글 번호를 입력하세요: ");
-				postId = Integer.parseInt(keyboard.nextLine().trim());
+				try {
+					postId = Integer.parseInt(keyboard.nextLine().trim());
+				} catch (NumberFormatException nfe){
+					System.out.println("숫자로 다시 입력해주세요.");
+					continue;
+				}
 				community.deletePost(postId);
-				break;
-
-			case 6:
+			} else if(choose == 6) {
 				community.getPostCount();
-				break;
-
-			case 7:
+			} else if(choose == 7) {
 				System.out.print("게시글 번호를 입력하세요: ");
-				postId = Integer.parseInt(keyboard.nextLine().trim());
+				try {
+					postId = Integer.parseInt(keyboard.nextLine().trim());
+				} catch (NumberFormatException nfe){
+					System.out.println("숫자로 다시 입력해주세요.");
+					continue;
+				}
 				community.createComment(postId);
-				break;
-
-			case 8:
-				System.out.print("게시글 번호를 입력하세요: ");
-				postId = Integer.parseInt(keyboard.nextLine().trim());
-				System.out.print("댓글 번호를 입력하세요: ");
-				commentId = Integer.parseInt(keyboard.nextLine().trim());
+			} else if(choose == 8) {
+				System.out.println("게시글 번호와 댓글 번호를 입력하세요.");
+				try {
+					postId = Integer.parseInt(keyboard.nextLine().trim());
+					commentId = Integer.parseInt(keyboard.nextLine().trim());
+				} catch (NumberFormatException nfe){
+					System.out.println("숫자로 다시 입력해주세요.");
+					continue;
+				}
 				community.deleteComment(postId, commentId);
-				break;
-
-			case 9:
-				System.out.print("게시글 번호를 입력하세요: ");
-				postId = Integer.parseInt(keyboard.nextLine().trim());
-				System.out.print("댓글 번호를 입력하세요: ");
-				commentId = Integer.parseInt(keyboard.nextLine().trim());
+			} else if(choose == 9) {
+				System.out.println("게시글 번호와 댓글 번호를 입력하세요.");
+				try {
+					postId = Integer.parseInt(keyboard.nextLine().trim());
+					commentId = Integer.parseInt(keyboard.nextLine().trim());
+				} catch (NumberFormatException nfe){
+					System.out.println("숫자로 다시 입력해주세요.");
+					continue;
+				}
 				community.recommendComment(postId, commentId);
-				break;
-
-			case 10:
+			} else if(choose == 10) {
 				System.out.print("검색어를 입력하세요: ");
-				String keyword = keyboard.nextLine().trim();
+				
+				String keyword = null;
+				try {
+					keyword= keyboard.nextLine().trim();
+				} catch (NumberFormatException nfe) {
+					System.out.println("다시 입력해주세요.");
+				}
 				community.searchPost(keyword);
-				break;
-
-			case 11:
+			} else if(choose == 11) {
 				community.deleteAllPost();
-				break;
-
-			case 12:
+			} else if(choose == 12) {
 				System.out.print("게시글 번호를 입력하세요: ");
-				postId = Integer.parseInt(keyboard.nextLine().trim());
+				try {
+					postId = Integer.parseInt(keyboard.nextLine().trim());
+				} catch (NumberFormatException nfe){
+					System.out.println("숫자로 다시 입력해주세요.");
+					continue;
+				}
 				community.deleteAllComment(postId);
-				break;
+			} else {
+				isFinish = true; // 종료
+				System.out.println("종료되었습니다.");
 			}
+			
+			
+			
+			
 		}
 	}
 		
