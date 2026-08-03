@@ -68,6 +68,7 @@ public class Community implements PostSystem{
 		}
 		
 		System.out.println("조회된 게시글입니다.");
+		
 		for (int i = 0; i < this.posts.size(); i++) {
 			Post post = this.posts.get(i);
 			
@@ -155,13 +156,14 @@ public class Community implements PostSystem{
 			return;
 		}
 		
-		// 해당 게시글의 댓글 삭제
-		for (int i = 0; i < this.comments.size(); i++) {
-			if (this.comments.get(i).getPostId() == postId) {
-				this.comments.remove(i);
-			}
-		}
+//		// 해당 게시글의 댓글 삭제
+//		for (int i = this.comments.size() -1; i >= 0 ; i--) {
+//			if (this.comments.get(i).getPostId() == postId) {
+//				this.comments.remove(i);
+//			}
+//		}
 
+		this.deleteAllComment(postId);
 		this.posts.remove(getPost);
 		
 		// postId set
@@ -198,9 +200,9 @@ public class Community implements PostSystem{
 	 */
 	@Override
 	public void createComment(int postId) {
-		Post getPost = this.findPost(postId);
+//		Post getPost = this.findPost(postId);
 
-		if (getPost == null) {
+		if (this.findPost(postId) == null) {
 			System.out.println("잘못된 게시글 번호입니다");
 			return;
 		}
@@ -329,7 +331,7 @@ public class Community implements PostSystem{
 		
 		int count = postComments.size();
 		
-		for (int i = 0; i < this.comments.size(); i++) {
+		for (int i = this.comments.size() -1; i >= 0 ; i--) {
 			if (this.comments.get(i).getPostId() == postId) {
 				this.comments.remove(i);
 			}
