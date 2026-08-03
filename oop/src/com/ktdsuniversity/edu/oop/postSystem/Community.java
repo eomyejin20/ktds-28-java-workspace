@@ -32,7 +32,7 @@ public class Community implements PostSystem{
 		System.out.println("게시글의 제목을 입력하세요.");
 		String postTitle = this.keyboard.nextLine().trim();
 		if (postTitle.isBlank() || postTitle.length() > 30) {
-			 throw new ArticleException("게시글 제목은 30글자 내로 작성해야 합니다.");
+			throw new ArticleException("게시글 제목은 30글자 내로 작성해야 합니다.");
 		}
 		
 		// 게시글 작성자(Scanner)
@@ -134,6 +134,9 @@ public class Community implements PostSystem{
 		
 		System.out.println("수정할 제목을 입력하세요.");
 		String newTitle = this.keyboard.nextLine().trim();
+		if (newTitle.isBlank() || newTitle.length() > 30) {
+			throw new ArticleException("게시글 제목은 30글자 내로 작성해야 합니다.");
+		}
 
 		System.out.println("수정할 내용을 입력하세요. ");
 		String newContent = this.keyboard.nextLine().trim();
