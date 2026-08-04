@@ -180,6 +180,14 @@ public class DateTime {
 		}
 	}
 	
+	public static void printChangeYears() {
+		// 오늘 날짜에서 연도만 2012년으로 바꿔서 출력하기
+		LocalDate now  = LocalDate.now();
+		now = now.withYear(2012);
+		System.out.println(now);
+	}
+	
+	
 	public static void main(String[] args) {
 		printNowDate();
 		printNowTime();
@@ -239,6 +247,10 @@ public class DateTime {
 		printIsToday(LocalDate.parse("2026-08-03"));
 		printIsToday(LocalDate.parse("2026-08-04"));
 		printIsToday(LocalDate.parse("2026-08-05"));
+		
+		System.out.println();
+		
+		printChangeYears();
 	}
 
 }
