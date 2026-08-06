@@ -1,9 +1,9 @@
 package com.ktdsuniversity.edu.fp.lambda;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import com.ktdsuniversity.edu.fp.anonymous.inf.Compare;
 import com.ktdsuniversity.edu.fp.objects.Dish;
 import com.ktdsuniversity.edu.fp.objects.DishList;
 
@@ -89,11 +89,20 @@ public class DishSummary {
 //	}
 	/** 함수*/
 	public <T> void printAllDishesBy(Predicate<Dish> condition) {
-		for (int i = 0; i < this.dishes.size(); i++) {
-			if (condition.test(this.dishes.get(i))) {
-				System.out.println(this.dishes.get(i));
-			}
-		}
+//		for (int i = 0; i < this.dishes.size(); i++) {
+//			if (condition.test(this.dishes.get(i))) {
+//				System.out.println(this.dishes.get(i));
+//			}
+//			
+//		}
+		List<Dish> temp = new ArrayList<>();
+		temp.addAll(this.dishes);
+		temp.removeIf(condition.negate()); // 조건을 부정
+		
+		temp.forEach((dish) -> {
+			System.out.println(dish);
+		});
+		temp.forEach(System.out::println);
 	}
 	
 //	public void printTotalCalories() {
