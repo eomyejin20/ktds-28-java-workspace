@@ -6,7 +6,6 @@ import java.util.List;
 import com.ktdsuniversity.edu.fp.objects.Dish;
 import com.ktdsuniversity.edu.fp.objects.DishList;
 import com.ktdsuniversity.edu.fp.objects.enums.DishType;
-import com.ktdsuniversity.edu.fp.objects.enums.FoodType;
 
 /**
  * 스트림에서 하나의 값만 찾아 가져온다.
