@@ -28,7 +28,7 @@ public class Collecting {
 					  return "Normal";
 				  } 
 				  return "Fat";
-			  })) // Map<String, List<Dish>>
+			  })) // Map<String, List<Dish>> 
 		;
 		
 		// key: String, value: List<Dish>

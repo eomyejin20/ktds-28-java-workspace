@@ -5,6 +5,9 @@ public abstract class StringUtil {
 	private StringUtil() {}
 
 	public static int toInt(String str) {
+		if (str == null) {
+			return 0;
+		}
 		return toInt(str, 0);
 	}
 	

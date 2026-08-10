@@ -1,5 +1,6 @@
 package com.ktdsuniversity.edu.fp.objects.utils;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 public abstract class ArrayUtil {
@@ -22,6 +23,10 @@ public abstract class ArrayUtil {
 	}
 	
 	public static int getInt(String[] array, int index) {
-		return getValue(array, index, StringUtil::toInt);
+		String value = getValue(array, index);
+		if (value == null) {
+			return 0;
+		}
+		return StringUtil.toInt(value);
 	}
 }
