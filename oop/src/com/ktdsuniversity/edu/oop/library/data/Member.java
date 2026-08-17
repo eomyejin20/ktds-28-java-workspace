@@ -13,15 +13,14 @@ public class Member {
 	private String name;
 	private String phone;
 	private int fine;
-	private LocalDate overCheckInDate;
+	private int overReturnCount;
 	private List<Book> recentBooks;
 	
-	public Member(int id, String name, String phone, int fine, LocalDate overCheckInDate) {
+	public Member(int id, String name, String phone, int fine, int overReturnCount) {
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
 		this.fine = fine;
-		this.overCheckInDate = overCheckInDate;
 		this.recentBooks = new ArrayList<>();
 	}
 
@@ -57,12 +56,12 @@ public class Member {
 		this.fine = fine;
 	}
 
-	public LocalDate getOverCheckInDate() {
-		return this.overCheckInDate;
+	public int getOverReturnCount() {
+		return this.overReturnCount;
 	}
 
-	public void setOverCheckInDate(LocalDate overCheckInDate) {
-		this.overCheckInDate = overCheckInDate;
+	public void setOverReturnCount(int overReturnCount) {
+		this.overReturnCount = overReturnCount;
 	}
 
 	public List<Book> getRecentBooks() {

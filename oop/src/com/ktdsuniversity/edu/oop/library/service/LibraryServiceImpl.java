@@ -21,6 +21,7 @@ public class LibraryServiceImpl implements LibraryService{
 	public static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final Library LIBRARY;
     private static final int POPULAR_STANDARD = 10;
+    private static final int BLACK_LIST = 5;
     
     public LibraryServiceImpl() {
     	this.LIBRARY = new Library();
@@ -125,7 +126,7 @@ public class LibraryServiceImpl implements LibraryService{
 		
 		System.out.println("책을 반납해야하는 회원을 조회합니다.");
 		if (findAllMembers().size() == 0) {
-			throw new NotFoundMemberException("회원이 존재하지 않습니다.");
+			throw new NotFoundMemberException();
 		}
 		
 		List<Member> returnMembers = new ArrayList<>();
@@ -139,7 +140,7 @@ public class LibraryServiceImpl implements LibraryService{
 	    }
 		
 		if (returnMembers.size() == 0) {
-	        throw new NotFoundMemberException("반납해야 하는 회원이 없습니다.");
+	        throw new NotFoundMemberException();
 	    }
 		
 		for (Member member : returnMembers) {
@@ -159,15 +160,15 @@ public class LibraryServiceImpl implements LibraryService{
 			throw new NotFoundBookException();
 		}
 		
-		boolean isPopular = false;
+		boolean isFound = false;
 		for (Book book : findAllBooks()) {
 	        if (book.getRentCount() > POPULAR_STANDARD) {
 	            System.out.println(book.getTitle());
-	            isPopular = true;
+	            isFound = true;
 	        }
 	    }
 		
-		if (!isPopular) {
+		if (!isFound) {
 			throw new NotFoundBookException();
 		}
 	}
@@ -175,22 +176,69 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 비인기 도서 목록 조회 기능 */
 	@Override
 	public void showUnpopularBooks() {
-		// TODO Auto-generated method stub
+		System.out.println("비인기 도서 목록입니다.");
 		
+		if (findAllBooks().size() == 0) {
+			throw new NotFoundBookException();
+		}
+		
+		boolean isFound = false;
+		for (Book book : findAllBooks()) {
+	        if (book.getRentCount() <= POPULAR_STANDARD) {
+	            System.out.println(book.getTitle());
+	            isFound = true;
+	        }
+	    }
+		
+		if (!isFound) {
+			throw new NotFoundBookException();
+		}
 	}
 
 	/** 상습미반납 회원 조회 기능 */
 	@Override
 	public void findBlackListMembers() {
-		// TODO Auto-generated method stub
 		
+		System.out.println("상습 미반납 회원을 조회합니다.");
+
+		if (findAllMembers().size() == 0) {
+	        throw new NotFoundMemberException();
+	    }
+
+	    boolean isFound = false;
+	    for (Member member : findAllMembers()) {
+	        if (member.getOverReturnCount() > BLACK_LIST) {
+	            System.out.println(member);
+	            isFound = true;
+	        }
+	    }
+
+	    if (!isFound) {
+	        throw new NotFoundMemberException();
+	    }
+	
 	}
 
 	/** 도서 검색 기능 */
 	@Override
 	public void searchBook() {
-		// TODO Auto-generated method stub
-		
+		String keyword = ScannerUtil.nextLine("검색어를 입력하세요: ").trim();
+	    if (keyword == null || keyword.isBlank()) {
+	        throw new LibraryException("검색어는 필수로 입력해야 합니다.");
+	    }
+
+	    boolean isFound = false;
+	    for (Book book : findAllBooks()) {
+	        if (book.getPublisher().contains(keyword) || book.getAuthor().contains(keyword)
+	                || book.getGenre().contains(keyword)) {
+	            System.out.println(book);
+	            isFound = true;
+	        }
+	    }
+
+	    if (!isFound) {
+	        throw new NotFoundBookException();
+	    }
 	}
 	
 	/** 도서 대여 기능*/
