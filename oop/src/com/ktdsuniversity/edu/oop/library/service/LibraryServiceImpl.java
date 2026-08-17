@@ -1,6 +1,7 @@
 package com.ktdsuniversity.edu.oop.library.service;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -281,6 +282,36 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 도서 반납 기능*/
 	@Override
 	public void returnBook() {
+		System.out.println("도서 반납을 시작합니다.");
+		
+		int memberId = ScannerUtil.nextInt("회원 id: ");
+		if (memberId < 0 || memberId >= findAllMembers().size()) {
+			throw new NotFoundMemberException();
+		}
+		Member member = findByMemberId(memberId);
+		
+		if (member.getRecentBooks().size() == 0) {
+			throw new NotFoundBookException();
+		}
+		
+		System.out.println("대여한 책 목록을 조회합니다.");
+		for (Book book : member.getRecentBooks()) {
+			System.out.println("도서 id: " + book.getBookId() + ", 제목: " + book.getTitle());
+		}
+		
+		int bookId = ScannerUtil.nextInt("반납할 도서 id: ");
+	    if (bookId < 0 || bookId > findAllBooks().size()) {
+	    	throw new NotFoundBookException();
+	    }
+	    Book book = findByBookId(bookId);
+	    
+	    if (book.getReturnDate().isBefore(LocalDate.now())) {
+	    	member.setOverReturnCount(member.getOverReturnCount() + 1);
+	    	Period period = Period.between(book.getReturnDate(), LocalDate.now());
+	    	int days = period.getDays();
+	    	member.setFine(member.getFine() * days * 500);
+	    }
+		
 		
 	}
 	
