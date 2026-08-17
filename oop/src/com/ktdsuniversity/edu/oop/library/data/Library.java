@@ -49,8 +49,8 @@ public class Library {
 	 * 책 제거 기능
 	 * @param book 출판 이후 10년이 지난 책 아이디
 	 */
-	public void deleteBook(int bookId) {
-		this.books.remove(bookId);
+	public void deleteBook(Book book) {
+		this.books.remove(book);
 	}
 	
 	/**

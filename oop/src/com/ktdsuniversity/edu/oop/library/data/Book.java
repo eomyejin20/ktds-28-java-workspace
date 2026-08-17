@@ -17,7 +17,8 @@ public class Book {
 	private LocalDate stockInDate;
 	private int price;
 	private String isbn;
-	private int bookId;
+	private int bookId; // 책의 고유 id
+	private static int bookIdShare;   // 모든 책의 공유 id(count용)
 	private int rentCount;
 	private boolean isRented;
 	private LocalDate rentDate;
@@ -38,9 +39,8 @@ public class Book {
 		this.stockInDate = LocalDate.now();
 		this.price = price;
 		this.isbn = isbn;
-		++this.bookId;
+		this.bookId = ++bookIdShare;
 	}
-
 
 
 	public String getTitle() {

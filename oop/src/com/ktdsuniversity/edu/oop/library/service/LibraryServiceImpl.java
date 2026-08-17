@@ -2,10 +2,13 @@ package com.ktdsuniversity.edu.oop.library.service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ktdsuniversity.edu.oop.library.data.Book;
 import com.ktdsuniversity.edu.oop.library.data.Library;
 import com.ktdsuniversity.edu.oop.library.exception.LibraryException;
+import com.ktdsuniversity.edu.oop.library.exception.NotFoundDisposeBookException;
 import com.ktdsuniversity.edu.oop.library.util.ScannerUtil;
 
 /**
@@ -13,7 +16,11 @@ import com.ktdsuniversity.edu.oop.library.util.ScannerUtil;
  */
 public class LibraryServiceImpl implements LibraryService{
 	public static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private final Library LIBRARY = new Library();
+    private final Library LIBRARY;
+    
+    public LibraryServiceImpl() {
+    	this.LIBRARY = new Library();
+    }
     
     /** 신규 책 입고 기능 */
 	@Override
@@ -76,7 +83,30 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 책 폐기처리 기능 */
 	@Override
 	public void disposeOldBook() {
-		// TODO Auto-generated method stub
+		boolean isDispose = false;
+		List<Book> disposeBook = new ArrayList<>();
+		
+		if (findAllBooks().size() == 0) {
+			throw new NotFoundDisposeBookException();
+		}
+		
+		for (Book book : findAllBooks()) {
+			if (book.getPubDate().plusYears(10).isBefore(LocalDate.now())) {
+				disposeBook.add(book);
+			}
+		}
+		
+		int bookId = -1;
+		for (Book book : disposeBook) {
+			bookId = book.getBookId();
+			LIBRARY.deleteBook(book);
+			System.out.println("bookId: " + bookId + "번을 폐기했습니다.");
+	        isDispose = true;
+		}
+		
+		if (!isDispose) {
+			throw new NotFoundDisposeBookException();
+		}
 		
 	}
 
@@ -114,5 +144,19 @@ public class LibraryServiceImpl implements LibraryService{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/** id로 책 정보 가져오기 */
+	public Book findByBookId(int bookId) {
+		for (Book book : LIBRARY.getBooks()) {
+			if (book.getBookId() == bookId) {
+				return book;
+			}
+		}
+		return null;
+	}
 
+	/** 모든 책 정보 가져오기 */
+	public List<Book> findAllBooks() {
+		return LIBRARY.getBooks();
+	}
 }
