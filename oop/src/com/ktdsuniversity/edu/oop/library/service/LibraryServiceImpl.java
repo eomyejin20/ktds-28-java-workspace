@@ -20,6 +20,7 @@ import com.ktdsuniversity.edu.oop.library.util.ScannerUtil;
 public class LibraryServiceImpl implements LibraryService{
 	public static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final Library LIBRARY;
+    private static final int POPULAR_STANDARD = 10;
     
     public LibraryServiceImpl() {
     	this.LIBRARY = new Library();
@@ -93,7 +94,7 @@ public class LibraryServiceImpl implements LibraryService{
 		System.out.println("책 폐기처리를 시작합니다.");
 		
 		if (findAllBooks().size() == 0) {
-			throw new NotFoundDisposeBookException();
+			throw new NotFoundBookException();
 		}
 		
 		boolean isDispose = false;
@@ -151,8 +152,24 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 인기 도서 목록 조회 기능 */
 	@Override
 	public void showPopularBooks() {
-		// TODO Auto-generated method stub
 		
+		System.out.println("인기 도서 목록입니다.");
+		
+		if (findAllBooks().size() == 0) {
+			throw new NotFoundBookException();
+		}
+		
+		boolean isPopular = false;
+		for (Book book : findAllBooks()) {
+	        if (book.getRentCount() > POPULAR_STANDARD) {
+	            System.out.println(book.getTitle());
+	            isPopular = true;
+	        }
+	    }
+		
+		if (!isPopular) {
+			throw new NotFoundBookException();
+		}
 	}
 
 	/** 비인기 도서 목록 조회 기능 */
