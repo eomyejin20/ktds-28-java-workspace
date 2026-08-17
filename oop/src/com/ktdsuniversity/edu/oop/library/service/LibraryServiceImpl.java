@@ -309,7 +309,7 @@ public class LibraryServiceImpl implements LibraryService{
 	    	member.setOverReturnCount(member.getOverReturnCount() + 1);
 	    	Period period = Period.between(book.getReturnDate(), LocalDate.now());
 	    	int days = period.getDays();
-	    	member.setFine(member.getFine() * days * 500);
+	    	member.setFine(member.getFine() + days * 500);
 	    }
 		
 		
@@ -330,7 +330,7 @@ public class LibraryServiceImpl implements LibraryService{
 		return LIBRARY.getBooks();
 	}
 	
-	/** id로 책 정보 가져오기 */
+	/** id로 회원 정보 가져오기 */
 	public Member findByMemberId(int memberId) {
 		for (Member member : LIBRARY.getMembers()) {
 			if (member.getId() == memberId) {
