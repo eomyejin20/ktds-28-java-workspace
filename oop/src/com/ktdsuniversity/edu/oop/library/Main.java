@@ -14,32 +14,32 @@ public class Main {
 		
 		while (true) {
 			System.out.println("===원하시는 기능을 선택하세요.===");
+			System.out.println("0. 신규 회원 등록하기");
 			System.out.println("1. 신규 책 입고하기");
 			System.out.println("2. 책 폐기 처리하기");
 			System.out.println("3. 반납일이 다가오거나 지난 회원 조회하기");
 			System.out.println("4. 인기 도서 목록 조회하기");
 			System.out.println("5. 비인기 도서 목록 조회하기");
 			System.out.println("6. 상습미반납 회원 조회하기");
-			System.out.println("7. 책 대여하기");
-			System.out.println("8. 책 반납하기");
-			System.out.println("0. 종료");
+			System.out.println("7. 책 검색하기");
+			System.out.println("8. 책 대여하기");
+			System.out.println("9. 책 반납하기");
+			System.out.println("99. 종료");
 			
 			int number = ScannerUtil.nextInt("번호: ");
-			if (number == 0) {
+			if (number == 99) {
 				System.out.println("프로그램 종료");
 				return;
 			}
 			
-			try {
-				runApp(number);
-			} finally {
-				ScannerUtil.close();
-			}
+			runApp(number);
 		}
 	}
 	
 	public static void runApp(int number) {
-		if (number == 1) {
+		if (number == 0) {
+			LIBRARY_SERVICE.register();
+		} else if (number == 1 ) {
 			LIBRARY_SERVICE.stockInNewBook();
 		} else if (number == 2 ) {
 			LIBRARY_SERVICE.disposeOldBook();
@@ -50,10 +50,12 @@ public class Main {
 		} else if (number == 5 ) {
 			LIBRARY_SERVICE.showUnpopularBooks();
 		} else if (number == 6 ) {
-			LIBRARY_SERVICE.searchBook();
+			LIBRARY_SERVICE.findBlackListMembers();
 		} else if (number == 7 ) {
-			LIBRARY_SERVICE.rentBook();
+			LIBRARY_SERVICE.searchBook();
 		} else if (number == 8 ) {
+			LIBRARY_SERVICE.rentBook();
+		} else if (number == 9 ) {
 			LIBRARY_SERVICE.returnBook();
 		} else {
 			throw new LibraryException("잘못 입력하셨습니다.");

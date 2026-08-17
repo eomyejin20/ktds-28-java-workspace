@@ -14,14 +14,12 @@ public class Member {
 	private String phone;
 	private int fine;
 	private int overReturnCount;
-	private List<Book> recentBooks;
+	private List<Book> rentBooks;
 	
-	public Member(int id, String name, String phone, int fine, int overReturnCount) {
-		this.id = id;
+	public Member(String name, String phone) {
 		this.name = name;
 		this.phone = phone;
-		this.fine = fine;
-		this.recentBooks = new ArrayList<>();
+		this.rentBooks = new ArrayList<>();
 	}
 
 	public int getId() {
@@ -64,12 +62,12 @@ public class Member {
 		this.overReturnCount = overReturnCount;
 	}
 
-	public List<Book> getRecentBooks() {
-		return this.recentBooks;
+	public List<Book> getRentedBooks() {
+		return this.rentBooks;
 	}
 
-	public void setRecentBooks(List<Book> recentBooks) {
-		this.recentBooks = recentBooks;
+	public void setRentedBooks(List<Book> rentBooks) {
+		this.rentBooks = rentBooks;
 	}
 	
 }

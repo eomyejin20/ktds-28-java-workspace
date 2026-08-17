@@ -1,6 +1,9 @@
 package com.ktdsuniversity.edu.oop.library.service;
 
 public interface LibraryService {
+	
+	/** 신규 회원 등록 기능*/
+	void register();
 
 	/** 신규 책 입고 기능 */
 	void stockInNewBook();

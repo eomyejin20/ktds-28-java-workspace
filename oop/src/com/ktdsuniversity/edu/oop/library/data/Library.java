@@ -11,6 +11,7 @@ public class Library {
 	private List<Book> books;
 	private List<Member> members;
 	private int bookId;
+	private int memberId;
 	
 	
 	public Library() {
@@ -76,6 +77,14 @@ public class Library {
 	 */
 	public int increaseBookId() {
 	    return ++this.bookId;
+	}
+	
+	/**
+	 * 회원 고유 아이디 관리
+	 * @return
+	 */
+	public int increaseMemberId() {
+	    return ++this.memberId;
 	}
 
 }

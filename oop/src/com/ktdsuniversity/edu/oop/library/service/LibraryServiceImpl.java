@@ -29,6 +29,29 @@ public class LibraryServiceImpl implements LibraryService{
     	this.LIBRARY = new Library();
     }
     
+    /** 신규 회원 등록 기능 */
+    @Override
+	public void register() {
+    	System.out.println("신규 회원을 등록합니다.");
+
+    	String name = ScannerUtil.nextLine("이름: ").trim();
+    	if (name == null || name.isBlank()) {
+    		throw new LibraryException("이름은 필수로 입력해야합니다.");
+    	}
+
+    	String phone = ScannerUtil.nextLine("전화번호: ").trim();
+    	if (phone == null || phone.isBlank()) {
+    		throw new LibraryException("전화번호는 필수로 입력해야합니다.");
+    	}
+
+    	Member newMember = new Member(name, phone);
+    	// 회원 고유 아이디
+    	newMember.setId(LIBRARY.increaseMemberId());
+
+    	LIBRARY.createMember(newMember);
+    	System.out.println("신규 회원이 등록되었습니다.");
+		
+	}
     /** 신규 책 입고 기능 */
 	@Override
 	public void stockInNewBook() {
@@ -133,7 +156,7 @@ public class LibraryServiceImpl implements LibraryService{
 		
 		List<Member> returnMembers = new ArrayList<>();
 		for (Member member : findAllMembers()) {
-			for (Book book : member.getRecentBooks()) {
+			for (Book book : member.getRentedBooks()) {
 	            if (!book.getReturnDate().plusDays(-2).isAfter(LocalDate.now())) {
 	                returnMembers.add(member);
 	                break;
@@ -275,7 +298,7 @@ public class LibraryServiceImpl implements LibraryService{
 	    book.setReturnDate(book.getRentDate().plusDays(7));
 	    book.setMemberName(member.getName());
 
-	    member.getRecentBooks().add(book);
+	    member.getRentedBooks().add(book);
 	    System.out.println("도서를 대여했습니다.");
 	}
 	
@@ -290,12 +313,12 @@ public class LibraryServiceImpl implements LibraryService{
 		}
 		Member member = findByMemberId(memberId);
 		
-		if (member.getRecentBooks().size() == 0) {
+		if (member.getRentedBooks().size() == 0) {
 			throw new NotFoundBookException();
 		}
 		
 		System.out.println("대여한 책 목록을 조회합니다.");
-		for (Book book : member.getRecentBooks()) {
+		for (Book book : member.getRentedBooks()) {
 			System.out.println("도서 id: " + book.getBookId() + ", 제목: " + book.getTitle());
 		}
 		
@@ -332,7 +355,9 @@ public class LibraryServiceImpl implements LibraryService{
 	
 	/** id로 회원 정보 가져오기 */
 	public Member findByMemberId(int memberId) {
-		for (Member member : LIBRARY.getMembers()) {
+		Member member  = null;
+		for (int i = 0; i < LIBRARY.getMembers().size(); i++) {
+			member = LIBRARY.getMembers().get(i);
 			if (member.getId() == memberId) {
 				return member;
 			}
