@@ -8,6 +8,7 @@ import java.util.List;
 import com.ktdsuniversity.edu.oop.library.data.Book;
 import com.ktdsuniversity.edu.oop.library.data.Library;
 import com.ktdsuniversity.edu.oop.library.data.Member;
+import com.ktdsuniversity.edu.oop.library.exception.DuplicatedRentBookException;
 import com.ktdsuniversity.edu.oop.library.exception.LibraryException;
 import com.ktdsuniversity.edu.oop.library.exception.NotFoundBookException;
 import com.ktdsuniversity.edu.oop.library.exception.NotFoundDisposeBookException;
@@ -21,7 +22,7 @@ public class LibraryServiceImpl implements LibraryService{
 	public static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final Library LIBRARY;
     private static final int POPULAR_STANDARD = 10;
-    private static final int BLACK_LIST = 5;
+    private static final int BLACK_LIST = 3;
     
     public LibraryServiceImpl() {
     	this.LIBRARY = new Library();
@@ -207,7 +208,7 @@ public class LibraryServiceImpl implements LibraryService{
 
 	    boolean isFound = false;
 	    for (Member member : findAllMembers()) {
-	        if (member.getOverReturnCount() > BLACK_LIST) {
+	        if (member.getOverReturnCount() >= BLACK_LIST) {
 	            System.out.println(member);
 	            isFound = true;
 	        }
@@ -244,7 +245,37 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 도서 대여 기능*/
 	@Override
 	public void rentBook() {
+		System.out.println("도서 대여를 시작합니다.");
 		
+		int memberId = ScannerUtil.nextInt("회원 id: ");
+		if (memberId < 0 || memberId >= findAllMembers().size()) {
+			throw new NotFoundMemberException();
+		}
+		Member member = findByMemberId(memberId);
+		
+	    int bookId = ScannerUtil.nextInt("도서 id: ");
+	    if (bookId < 0 || bookId > findAllBooks().size()) {
+	    	throw new NotFoundBookException();
+	    }
+	    Book book = findByBookId(bookId);
+
+	    if (member.getOverReturnCount() >= BLACK_LIST) {
+	        throw new LibraryException("미반납회수 초과로 대여할 수 없습니다.");
+	    }
+
+	    if (book.isRented()) {
+	        throw new DuplicatedRentBookException();
+	    }
+	    
+	    book.setRentCount(book.getRentCount() + 1);
+	    book.setRented(true);
+	    book.setRentDate(LocalDate.now());
+	    book.setReturned(false);
+	    book.setReturnDate(book.getRentDate().plusDays(7));
+	    book.setMemberName(member.getName());
+
+	    member.getRecentBooks().add(book);
+	    System.out.println("도서를 대여했습니다.");
 	}
 	
 	/** 도서 반납 기능*/
@@ -266,6 +297,16 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 모든 책 정보 가져오기 */
 	public List<Book> findAllBooks() {
 		return LIBRARY.getBooks();
+	}
+	
+	/** id로 책 정보 가져오기 */
+	public Member findByMemberId(int memberId) {
+		for (Member member : LIBRARY.getMembers()) {
+			if (member.getId() == memberId) {
+				return member;
+			}
+		}
+		return null;
 	}
 	
 	/** 모든 회원 정보 가져오기 */
