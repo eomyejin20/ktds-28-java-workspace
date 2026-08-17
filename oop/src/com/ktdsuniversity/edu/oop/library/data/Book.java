@@ -13,7 +13,7 @@ public class Book {
 	private String publisher;
 	private String author;
 	private LocalDate pubDate;
-	private String printPageCount;
+	private long printPageCount;
 	private LocalDate stockInDate;
 	private int price;
 	private String isbn;
@@ -27,8 +27,7 @@ public class Book {
 
 
 	public Book(String title, String subTitle, String genre, String publisher, String author, LocalDate pubDate,
-			String printPageCount, LocalDate stockInDate, int price, String isbn, int bookId, int rentCount,
-			boolean isRented, LocalDate rentDate, boolean isReturned, LocalDate returnDate, String memberName) {
+			long printPageCount, int price, String isbn) {
 		this.title = title;
 		this.subTitle = subTitle;
 		this.genre = genre;
@@ -36,16 +35,10 @@ public class Book {
 		this.author = author;
 		this.pubDate = pubDate;
 		this.printPageCount = printPageCount;
-		this.stockInDate = stockInDate;
+		this.stockInDate = LocalDate.now();
 		this.price = price;
 		this.isbn = isbn;
-		this.bookId = bookId;
-		this.rentCount = rentCount;
-		this.isRented = isRented;
-		this.rentDate = rentDate;
-		this.isReturned = isReturned;
-		this.returnDate = returnDate;
-		this.memberName = memberName;
+		++this.bookId;
 	}
 
 
@@ -122,13 +115,13 @@ public class Book {
 
 
 
-	public String getPrintPageCount() {
+	public long getPrintPageCount() {
 		return this.printPageCount;
 	}
 
 
 
-	public void setPrintPageCount(String printPageCount) {
+	public void setPrintPageCount(long printPageCount) {
 		this.printPageCount = printPageCount;
 	}
 
@@ -250,8 +243,5 @@ public class Book {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-
-
-
 	
 }
