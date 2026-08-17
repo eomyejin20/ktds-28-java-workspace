@@ -22,7 +22,7 @@ public class TvScheduleImpl implements TvSchedule {
 			throw new TvException("시간대는 필수로 입력해야합니다.");
 		}
 		
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("H:m");
 		LocalTime searchTime = LocalTime.parse(time, format);
 
 		Program program = null;
@@ -32,7 +32,7 @@ public class TvScheduleImpl implements TvSchedule {
 			
 			// fromTime <= searchTime <= toTime
 			if (!searchTime.isBefore(program.getFromTime()) &&
-				searchTime.isAfter(program.getToTime())) {
+				!searchTime.isAfter(program.getToTime())) {
 				isFound = true;
 				break;
 			}
