@@ -18,7 +18,6 @@ public class Book {
 	private int price;
 	private String isbn;
 	private int bookId; // 책의 고유 id
-	private static int bookIdShare;   // 모든 책의 공유 id(count용)
 	private int rentCount;
 	private boolean isRented;
 	private LocalDate rentDate;
@@ -39,7 +38,6 @@ public class Book {
 		this.stockInDate = LocalDate.now();
 		this.price = price;
 		this.isbn = isbn;
-		this.bookId = ++bookIdShare;
 	}
 
 
@@ -243,5 +241,6 @@ public class Book {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
+	
 	
 }

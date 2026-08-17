@@ -73,7 +73,4 @@ public class Member {
 		this.recentBooks = recentBooks;
 	}
 	
-	
-	
-	
 }

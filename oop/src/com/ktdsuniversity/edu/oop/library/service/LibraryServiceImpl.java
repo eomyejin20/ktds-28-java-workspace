@@ -7,8 +7,11 @@ import java.util.List;
 
 import com.ktdsuniversity.edu.oop.library.data.Book;
 import com.ktdsuniversity.edu.oop.library.data.Library;
+import com.ktdsuniversity.edu.oop.library.data.Member;
 import com.ktdsuniversity.edu.oop.library.exception.LibraryException;
+import com.ktdsuniversity.edu.oop.library.exception.NotFoundBookException;
 import com.ktdsuniversity.edu.oop.library.exception.NotFoundDisposeBookException;
+import com.ktdsuniversity.edu.oop.library.exception.NotFoundMemberException;
 import com.ktdsuniversity.edu.oop.library.util.ScannerUtil;
 
 /**
@@ -76,6 +79,9 @@ public class LibraryServiceImpl implements LibraryService{
 		Book newBook = new Book(title, subTitle, genre, publisher, author, pubDate,
 				printPageCount, price, isbn);
 		
+		// 관리 고유번호를 임의로 부여
+		newBook.setBookId(LIBRARY.increaseBookId());
+		
 		LIBRARY.createBook(newBook);
 		System.out.println("신규 책이 입고되었습니다.");
 	}
@@ -83,13 +89,15 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 책 폐기처리 기능 */
 	@Override
 	public void disposeOldBook() {
-		boolean isDispose = false;
-		List<Book> disposeBook = new ArrayList<>();
+		
+		System.out.println("책 폐기처리를 시작합니다.");
 		
 		if (findAllBooks().size() == 0) {
 			throw new NotFoundDisposeBookException();
 		}
 		
+		boolean isDispose = false;
+		List<Book> disposeBook = new ArrayList<>();
 		for (Book book : findAllBooks()) {
 			if (book.getPubDate().plusYears(10).isBefore(LocalDate.now())) {
 				disposeBook.add(book);
@@ -113,7 +121,30 @@ public class LibraryServiceImpl implements LibraryService{
 	/** 반납일이 다가오거나 지난 회원 조회 기능 */
 	@Override
 	public void findByMemberWithReturnDate() {
-		// TODO Auto-generated method stub
+		
+		System.out.println("책을 반납해야하는 회원을 조회합니다.");
+		if (findAllMembers().size() == 0) {
+			throw new NotFoundMemberException("회원이 존재하지 않습니다.");
+		}
+		
+		List<Member> returnMembers = new ArrayList<>();
+		for (Member member : findAllMembers()) {
+			for (Book book : member.getRecentBooks()) {
+	            if (!book.getReturnDate().plusDays(-2).isAfter(LocalDate.now())) {
+	                returnMembers.add(member);
+	                break;
+	            }
+	        }
+	    }
+		
+		if (returnMembers.size() == 0) {
+	        throw new NotFoundMemberException("반납해야 하는 회원이 없습니다.");
+	    }
+		
+		for (Member member : returnMembers) {
+			System.out.println("====회원 목록====");
+			System.out.println(member.getName());
+		}
 		
 	}
 
@@ -145,6 +176,18 @@ public class LibraryServiceImpl implements LibraryService{
 		
 	}
 	
+	/** 도서 대여 기능*/
+	@Override
+	public void rentBook() {
+		
+	}
+	
+	/** 도서 반납 기능*/
+	@Override
+	public void returnBook() {
+		
+	}
+	
 	/** id로 책 정보 가져오기 */
 	public Book findByBookId(int bookId) {
 		for (Book book : LIBRARY.getBooks()) {
@@ -159,4 +202,10 @@ public class LibraryServiceImpl implements LibraryService{
 	public List<Book> findAllBooks() {
 		return LIBRARY.getBooks();
 	}
+	
+	/** 모든 회원 정보 가져오기 */
+	 public List<Member> findAllMembers() {
+		 return LIBRARY.getMembers();
+	 }
+
 }

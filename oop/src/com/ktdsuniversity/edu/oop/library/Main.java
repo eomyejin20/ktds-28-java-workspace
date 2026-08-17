@@ -20,6 +20,8 @@ public class Main {
 			System.out.println("4. 인기 도서 목록 조회하기");
 			System.out.println("5. 비인기 도서 목록 조회하기");
 			System.out.println("6. 상습미반납 회원 조회하기");
+			System.out.println("7. 책 대여하기");
+			System.out.println("8. 책 반납하기");
 			System.out.println("0. 종료");
 			
 			int number = ScannerUtil.nextInt("번호: ");
@@ -49,6 +51,10 @@ public class Main {
 			LIBRARY_SERVICE.showUnpopularBooks();
 		} else if (number == 6 ) {
 			LIBRARY_SERVICE.searchBook();
+		} else if (number == 7 ) {
+			LIBRARY_SERVICE.rentBook();
+		} else if (number == 8 ) {
+			LIBRARY_SERVICE.returnBook();
 		} else {
 			throw new LibraryException("잘못 입력하셨습니다.");
 		}

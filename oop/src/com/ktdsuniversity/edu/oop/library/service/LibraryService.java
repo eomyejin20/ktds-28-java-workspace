@@ -22,4 +22,10 @@ public interface LibraryService {
 	
 	/** 도서 검색 기능 */
 	void searchBook();
+	
+	/** 도서 대여 기능*/
+	void rentBook();
+	
+	/** 도서 반납 기능*/
+	void returnBook();
 }

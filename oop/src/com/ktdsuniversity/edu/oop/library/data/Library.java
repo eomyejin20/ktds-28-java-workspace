@@ -10,6 +10,7 @@ public class Library {
 	
 	private List<Book> books;
 	private List<Member> members;
+	private int bookId;
 	
 	
 	public Library() {
@@ -65,8 +66,16 @@ public class Library {
 	 * 회원 삭제 기능
 	 * @param memberId 삭제할 회원 아이디
 	 */
-	public void deleteMember(int memberId) {
-		this.members.remove(memberId);
+	public void deleteMember(Member member) {
+		this.members.remove(member);
+	}
+	
+	/**
+	 * 책 고유 아이디 관리
+	 * @return
+	 */
+	public int increaseBookId() {
+	    return ++this.bookId;
 	}
 
 }
