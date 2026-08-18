@@ -108,6 +108,7 @@ public class LibraryServiceImpl implements LibraryService{
 		
 		// 관리 고유번호를 임의로 부여
 		newBook.setBookId(LIBRARY.increaseBookId());
+		newBook.setReturned(true);
 		
 		LIBRARY.createBook(newBook);
 		System.out.println("신규 책이 입고되었습니다.");
@@ -328,13 +329,21 @@ public class LibraryServiceImpl implements LibraryService{
 	    }
 	    Book book = findByBookId(bookId);
 	    
+	    // 벌금
 	    if (book.getReturnDate().isBefore(LocalDate.now())) {
 	    	member.setOverReturnCount(member.getOverReturnCount() + 1);
 	    	Period period = Period.between(book.getReturnDate(), LocalDate.now());
 	    	int days = period.getDays();
 	    	member.setFine(member.getFine() + days * 500);
 	    }
-		
+	    
+	    book.setRented(false);
+	    book.setReturned(true);
+	    book.setReturnDate(LocalDate.now());
+	    book.setMemberName(null);
+	    
+		member.getRentedBooks().remove(book);
+		System.out.println("도서를 반납했습니다.");
 		
 	}
 	
